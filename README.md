@@ -2,7 +2,7 @@
 
 Fork of ["WordleFR"](https://github.com/LouanBen/wordle-fr) made by [@louanben](https://twitter.com/louanben) 
 
-The game was modify to find a name.
+The game was updated to find a name.
 
 If you want to force a name, set it in .env
 ```
