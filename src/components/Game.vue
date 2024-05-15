@@ -301,6 +301,7 @@ const FIRST_DAY = moment("2022-01-10T00:00:00");
 const NB_LETTERS = 5;
 const NB_ATTEMPTS = 6;
 const NAME_TO_FIND = process.env.VUE_APP_NAME_TO_FIND || "";
+const AUTHOR = process.env.VUE_APP_AUTHOR || "🤷";
 const KEYBOARD_AZERTY = {
     name: 'azerty',
     content: [
@@ -849,7 +850,7 @@ export default {
             const wordID = this.getWordID()
             const middle = this.archivesMode ? `archive${wordID > 0 ? ` #${wordID}`:''} [${this.archivesDate.format('DD/MM/YYYY')}]` : `#${wordID}`
 
-            const title = `Le Mot (@WordleFR) ${middle} ${this.currentAttempt <= NB_ATTEMPTS ? this.currentAttempt : '💀' }/${NB_ATTEMPTS}\n\n`;
+            const title = `Son prénom ? Par ${AUTHOR} ${middle} ${this.currentAttempt <= NB_ATTEMPTS ? this.currentAttempt : '💀' }/${NB_ATTEMPTS}\n\n`;
             let schema = this.results.slice(0, this.currentAttempt).map((result) => {
                 return result.map((letter) => {
                     if (letter === 'correct') {
@@ -861,7 +862,7 @@ export default {
                     }
                 }).join('');
             }).join('\n');
-            const url = "https://wordle.louan.me";
+            const url = "https://wordle-fr-prenoms.vercel.app";
 
             let sharedContent = title + schema;
 
