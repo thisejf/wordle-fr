@@ -199,7 +199,7 @@
                             <div class="subtitle">Le mot était</div>
                             <h2>{{ wordOfTheDay }}</h2>
                             <div class="ctas">
-                                <a :href="`https://1mot.net/${this.wordOfTheDay.toLowerCase()}`" target="_blank" class="btn definition-btn">
+                                <a :href="`https://www.journaldesfemmes.fr/prenoms/${this.wordOfTheDay.toLowerCase()}`" target="_blank" class="btn definition-btn">
                                     <img class="icon" src="/icons/book.svg" />
                                     <p>Définition</p>
                                 </a>
@@ -207,12 +207,6 @@
                                     <img class="icon" src="/icons/copy.svg" />
                                     <p>{{resultsCopied ? 'Copié !' : 'Partager'}}</p>
                                 </div>
-                            </div>
-                            <div class="ctas">
-                                <a href="https://ko-fi.com/louanben" target="_blank" class="btn support-btn">
-                                    <img class="icon" src="/icons/heart.svg" />
-                                    <p>Soutenir l'auteur du projet</p>
-                                </a>
                             </div>
                           <textarea id="clipboard-buffer"></textarea>
                         </div>
@@ -271,16 +265,10 @@
                             <div class="credits">
                                 <h2>Crédits</h2>
                                 <p>
-                                    Jeu développé par <a href="https://twitter.com/louanben" target="_blank">@louanben</a>.
+                                    Ce jeu est une reprise du jeu "wordle-fr" développé par <a href="https://twitter.com/louanben" target="_blank">@louanben</a>.
                                 </p>
                                 <p>
                                     Concept et design librement inspirés de <strong>Wordle</strong> par <a href="https://twitter.com/powerlanguish" target="_blank">@powerlanguish</a> (Josh Wardle).
-                                </p>
-                                <p>
-                                    Merci à <a href="https://twitter.com/Richiesque" target="_blank">@Richiesque</a> pour son aide précieuse, ainsi qu'à <a href="https://twitter.com/Reelwens" target="_blank">@Reelwens</a> pour le design !
-                                </p>
-                                <p>
-                                    Pour toute demandes, contacter <strong>@louanben</strong> sur Twitter, ou bien par mail : <strong>louanben.pro@gmail.com</strong>.
                                 </p>
                                 <p>
                                     <strong>WordleFR</strong> est un projet <a href="https://github.com/louanben/wordle-fr" target="_blank">open-source</a>.
