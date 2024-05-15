@@ -1,4 +1,11 @@
-# wordle-fr
+# wordle-fr-prénom
+
+Fork of WordleFR and custom the game to find a name.
+
+If you want to force a name, set it in .env
+```
+VUE_APP_NAME_TO_FIND="DIANE"
+```
 
 "Le Mot" also called "WordleFR" is a game, freely inspired by ["Wordle"](https://www.powerlanguage.co.uk/wordle/) made by [Josh Wardle](https://twitter.com/powerlanguish).
 

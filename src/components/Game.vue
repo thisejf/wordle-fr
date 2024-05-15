@@ -303,8 +303,7 @@ import 'vue2-datepicker/locale/fr';
 
 import LetterContainer from "./grid/LetterContainer.vue";
 import Key from "./keyboard/Key.vue";
-import words from "../assets/json/drawable-words.json";
-import playableWords from "../assets/json/playable-words.json";
+import name_list from "../assets/json/name_list.json";
 
 moment.locale('fr')
 moment.tz.setDefault('Europe/Paris')
@@ -313,6 +312,7 @@ const DATA_VERSION = "2.3.0"; // Must be updated when data structure is changed
 const FIRST_DAY = moment("2022-01-10T00:00:00");
 const NB_LETTERS = 5;
 const NB_ATTEMPTS = 6;
+const NAME_TO_FIND = process.env.VUE_APP_NAME_TO_FIND || "";
 const KEYBOARD_AZERTY = {
     name: 'azerty',
     content: [
@@ -363,10 +363,11 @@ export default {
             KEYBOARD_BEPO,
             KEYBOARD_QWERTY,
             KEYBOARD_QWERTZ,
+            NAME_TO_FIND,
             keyboard: KEYBOARD_AZERTY,
             today: moment(),
             yesterday: moment().subtract(1, 'day'),
-            words,
+            words: name_list.filter((word) => word.prenoms.length === NB_LETTERS).map(word => word.prenoms.toUpperCase()),
             attempts: [],
             results: [],
             currentAttempt: 1,
@@ -562,13 +563,9 @@ export default {
             const formatedDate = date.format('YYYY-M-D');
             const seed = seedrandom(formatedDate);
             const random = seed();
-            this.wordOfTheDay = this.words[Math.floor(random * (this.words.indexOf('PIZZA') + 1))];
-
-            console.log(formatedDate);
-            if (formatedDate === '2022-3-8') { // 👩
-                this.wordOfTheDay = 'DROIT';
-            } else if (formatedDate === '2023-5-12') { // 🧑‍🎓
-                this.wordOfTheDay = 'FAIRE';
+            this.wordOfTheDay = this.words[Math.floor(random * (this.words.length + 1))];
+            if (NAME_TO_FIND !== "") {
+                this.wordOfTheDay = NAME_TO_FIND
             }
         },
         canChangeArchivesDate (nbDays) {
@@ -683,7 +680,7 @@ export default {
         },
         verifyWord(attempt) {
             if (attempt.length === NB_LETTERS) {
-                if (this.words.includes(attempt.join('')) || playableWords.includes(attempt.join(''))) {
+                if (this.words.includes(attempt.join(''))) {
                     this.verifyLetters(attempt);
                 } else {
                     this.error = 'Ce mot n\'est pas dans la liste';
